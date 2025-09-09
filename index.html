@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peron Assessoria de Seguros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos gerais */
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #c0952d;
+            --black: #121212;
+            --dark-gray: #1a1a1a;
+            --text-gray: #cccccc;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --red-close: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--black);
+            color: var(--text-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header e Logo */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-name {
+            font-family: 'Merriweather', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .sub-name {
+            font-size: 0.65rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+            color: #fff;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519904252196-90f1a6ea05a2?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 15px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--black);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            border-color: var(--gold);
+            color: var(--gold);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        /* Seções e Conteúdo */
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+        p { margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8; }
+        .about-content { display: flex; align-items: center; gap: 50px; }
+        .about-text, .about-image { flex: 1; }
+        .about-image img { width: 100%; border-radius: 10px; box-shadow: var(--shadow); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .service-card { background: var(--dark-gray); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-icon { background: var(--gold); height: 80px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--black); }
+        .service-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .service-content h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 15px; }
+        .service-content p { flex-grow: 1; margin-bottom: 20px; }
+        .service-content .service-link { color: var(--gold); font-weight: bold; margin-top: auto; }
+        .service-content .service-link:hover { color: #fff; }
+
+        #depoimentos { background-color: var(--dark-gray); }
+        .testimonial-card { background: var(--black); padding: 40px; border-radius: 10px; text-align: center; max-width: 700px; margin: 0 auto; border-left: 5px solid var(--gold); box-shadow: var(--shadow); }
+        .testimonial-card .fa-quote-left { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
+        .testimonial-card p { font-style: italic; }
+        .testimonial-card h4 { color: #fff; font-weight: 700; }
+        
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .contact-info { display: flex; flex-direction: column; gap: 25px; }
+        .contact-item { display: flex; align-items: center; gap: 15px; }
+        .contact-icon { font-size: 1.5rem; color: var(--gold); }
+        .contact-item h3 a { color: var(--text-gray); }
+        .contact-item h3 a:hover { color: var(--gold); }
+        
+        .contact-form { background: var(--dark-gray); padding: 30px; border-radius: 15px; box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #333; background: #1a1a1a; border-radius: 8px; color: var(--text-gray); font-size: 1rem; }
+        
+        footer { background: var(--dark-gray); color: #777; padding: 40px 0; text-align: center; }
+        footer p { font-size: 0.9rem; }
+        #openPrivacyModalFooter { cursor: pointer; text-decoration: underline; }
+        
+        .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); z-index: 1000; animation: pulse 2s infinite; transition: all 0.3s ease; }
+        .floating-whatsapp:hover { transform: scale(1.1); }
+        .floating-whatsapp::after { content: 'Fale Conosco!'; position: absolute; right: 70px; top: 50%; transform: translateY(-50%); background-color: #f0f0f0; color: #111; padding: 8px 15px; border-radius: 15px; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; font-weight: 600; white-space: nowrap; box-shadow: 2px 2px 8px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .floating-whatsapp:hover::after { opacity: 1; visibility: visible; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+        [data-anime] { opacity: 0; transform: translate3d(0, 50px, 0); transition: opacity 0.8s ease, transform 0.8s ease; }
+        [data-anime].animate { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background-color: var(--dark-gray); padding: 30px; border-radius: 10px; width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto; position: relative; box-shadow: var(--shadow); transform: scale(0.9); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.8rem; color: var(--red-close); cursor: pointer; transition: color 0.3s ease; }
+        .modal-close:hover { color: #fff; }
+        .modal-content h1, .modal-content h2 { font-family: 'Merriweather', serif; color: var(--gold); }
+        .modal-content ul { list-style-type: disc; padding-left: 25px; }
+        
+        @media (max-width: 768px) {
+            .main-name { font-size: 1.5rem; }
+            .sub-name { font-size: 0.6rem; }
+            nav { position: fixed; top: 80px; right: -100%; background: var(--dark-gray); flex-direction: column; width: 100%; height: calc(100vh - 80px); padding: 40px; transition: right 0.4s ease; align-items: center; justify-content: center; }
+            nav.active { right: 0; }
+            .menu-toggle { display: block; z-index: 1001; }
+            .hero h1 { font-size: 2.3rem; }
+            .btn-container { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+            .btn-outline { margin-left: 0; }
+            .about-content, .contact-container { flex-direction: column; grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo-container">
+            <img src="img/logo.png" alt="Peron Seguros Logo" class="logo">
+            <div class="logo-text-container">
+                <span class="main-name">Peron</span>
+                <span class="sub-name">Assessoria de Seguros</span>
+            </div>
+        </a>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <nav id="mainNav">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Quem Somos</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1 data-anime>Proteção com propósito.<br>Tranquilidade com confiança.</h1>
+                <p data-anime>Assessoria especializada para proteger seus sonhos, patrimônio e família.</p>
+                <div class="btn-container" data-anime>
+                    <a class="btn btn-primary" href="https://wa.me/5549999431170" target="_blank"><i class="fab fa-whatsapp"></i> Solicite sua simulação</a>
+                    <a class="btn btn-outline" href="#servicos">Conheça nossos serviços</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <div class="container">
+                <div class="section-header" data-anime>
+                    <h2>Quem Somos</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text" data-anime>
+                        <p>Em um mundo de incertezas, a Peron Assessoria de Seguros é o seu ponto de segurança – o seu farol.</p>
+                        <p>Assim como os marinheiros buscam a luz guia durante as tempestades, estamos ao seu lado nos dias mais difíceis, oferecendo a clareza e a direção necessárias para navegar por qualquer desafio. Nossa missão é ser a sua referência de tranquilidade.</p>
+                        <p>E quando os mares estão calmos, nossa presença é a certeza de que sua jornada terminará em terra firme, com seu patrimônio e seus sonhos protegidos. Transformamos produtos complexos em soluções que fazem sentido para você, garantindo que, não importa o tempo, a sua segurança seja sempre o destino final.</p>
+                    </div>
+                    <div class="about-image" data-anime>
+                        <img src="img/sua-foto.jpg" alt="Consultor Peron">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" style="background-color: var(--dark-gray);">
+            <div class="container">
+                <div class="section-header" data-anime>
+                    <h2>Nossos Serviços</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-anime>
+                        <div class="service-icon"><i class="fas fa-heart"></i></div>
+                        <div class="service-content">
+                            <h3>Seguro de Vida</h3>
+                            <p>Proteção financeira para sua família em caso de imprevistos, com coberturas que garantem tranquilidade e segurança para o futuro.</p>
+                            <a href="#contato" class="service-link">Solicitar cotação <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-anime>
+                        <div class="service-icon"><i class="fas fa-car"></i></div>
+                        <div class="service-content">
+                            <h3>Seguro Automotivo</h3>
+                            <p>Coberturas completas para seu veículo, incluindo colisão, roubo, terceiros e assistência 24h em todo o território nacional.</p>
+                            <a href="#contato" class="service-link">Solicitar cotação <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-anime>
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <div class="service-content">
+                            <h3>Seguro Residencial</h3>
+                            <p>Proteção para seu lar contra incêndio, roubo, danos elétricos e responsabilidade civil, com assistências para pequenos reparos.</p>
+                            <a href="#contato" class="service-link">Solicitar cotação <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-anime>
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <div class="service-content">
+                            <h3>Seguro Empresarial</h3>
+                            <p>Soluções customizadas para empresas de todos os portes, protegendo patrimônio, operações e responsabilidades.</p>
+                            <a href="#contato" class="service-link">Solicitar cotação <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-anime>
+                        <div class="service-icon"><i class="fas fa-plane"></i></div>
+                        <div class="service-content">
+                            <h3>Seguro Viagem</h3>
+                            <p>Cobertura médica internacional, assistência em viagem e proteção para cancelamentos ou interrupções de viagem.</p>
+                            <a href="#contato" class="service-link">Solicitar cotação <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="service-card" data-anime>
+                        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="service-content">
+                            <h3>Seguro de Condomínio</h3>
+                            <p>Proteção completa para áreas comuns, equipamentos e responsabilidade civil do condomínio com coberturas específicas.</p>
+                            <a href="#contato" class="service-link">Solicitar cotação <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="depoimentos">
+            <div class="container">
+                <div class="section-header" data-anime>
+                    <h2>O que nossos clientes dizem</h2>
+                </div>
+                <div class="testimonial-card" data-anime>
+                    <i class="fas fa-quote-left"></i>
+                    <p>"A assessoria da Peron foi fundamental. Encontrei a cobertura perfeita para minha família com um atendimento claro e muito atencioso. Recomendo de olhos fechados!"</p>
+                    <h4>- Matheus Colusso</h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" style="background-color: var(--dark-gray);">
+            <div class="container">
+                <div class="section-header" data-anime>
+                    <h2>Entre em Contato</h2>
+                    <p>Vamos conversar? Envie sua dúvida ou solicite sua cotação personalizada.</p>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info" data-anime>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <h3><a href="https://wa.me/5549999431170" target="_blank">(49) 99943-1170</a></h3>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <h3><a href="mailto:contato@peronseguros.com.br">contato@peronseguros.com.br</a></h3>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <h3>Joaçaba - Santa Catarina</h3>
+                        </div>
+                    </div>
+                    <div class="contact-form" data-anime>
+                        <form id="contactForm" action="https://formspree.io/f/mdklywlb" method="POST">
+                            <div class="form-group"><input name="nome" type="text" placeholder="Seu nome completo" required></div>
+                            <div class="form-group"><input name="email" type="email" placeholder="Seu melhor e-mail" required></div>
+                            <div class="form-group"><input name="telefone" type="tel" placeholder="Seu telefone (Opcional)"></div>
+                            <div class="form-group">
+                                <select name="assunto" required>
+                                    <option value="" disabled selected>Qual seguro você busca?</option>
+                                    <option value="Seguro Veicular">Seguro Veicular</option>
+                                    <option value="Seguro Residencial">Seguro Residencial</option>
+                                    <option value="Seguro de Vida">Seguro de Vida</option>
+                                    <option value="Seguro Empresarial">Seguro Empresarial</option>
+                                    <option value="Outros Seguros">Outros Seguros</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><textarea name="mensagem" placeholder="Sua mensagem" rows="4" required></textarea></div>
+                            <div class="form-group">
+                                <input type="checkbox" id="lgpdConsent" name="lgpdConsent" required style="width: auto; vertical-align: middle;">
+                                <label for="lgpdConsent" style="font-size: 0.9rem;">
+                                    Li e concordo com a <a href="#" id="openPrivacyModal" style="text-decoration: underline;">Política de Privacidade</a>.
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Peron Assessoria de Seguros. Todos os direitos reservados.</p>
+            <p><a href="#" id="openPrivacyModalFooter" style="text-decoration: underline;">Política de Privacidade</a></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5549999431170" class="floating-whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closePrivacyModal"><i class="fas fa-times"></i></button>
+            <h1>Política de Privacidade</h1>
+            <p><strong>Data da Última Atualização:</strong> 07 de Setembro de 2025</p>
+            <p>A sua privacidade e a segurança dos seus dados são de extrema importância para a Peron Assessoria de Seguros. Esta Política de Privacidade descreve como coletamos, usamos, compartilhamos e protegemos suas informações pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/18).</p>
+            <h2>1. Quais Dados Coletamos?</h2>
+            <ul>
+                <li><strong>Informações de Identificação:</strong> Nome completo, CPF, RG, data de nascimento, sexo, estado civil.</li>
+                <li><strong>Informações de Contato:</strong> Endereço, e-mail, número de telefone.</li>
+                <li><strong>Informações para Análise de Risco:</strong> Profissão, dados de veículos, imóveis, e em casos específicos, dados sensíveis relacionados à saúde, mediante seu consentimento explícito.</li>
+            </ul>
+            <h2>2. Como Coletamos Seus Dados?</h2>
+            <p>Através de formulários no site, WhatsApp, telefone, e-mail ou documentos fornecidos por você.</p>
+            <h2>3. Para Qual Finalidade Utilizamos Seus Dados?</h2>
+            <p>Para realizar cotações, emitir apólices, gerenciar seu seguro, prestar suporte em sinistros e cumprir obrigações legais (SUSEP).</p>
+            <h2>4. Com Quem Compartilhamos Seus Dados?</h2>
+            <p>Compartilhamos seus dados apenas com as Companhias Seguradoras para a prestação do serviço contratado.</p>
+            <h2>5. Seus Direitos como Titular dos Dados</h2>
+            <p>Você tem o direito de acessar, corrigir ou solicitar a eliminação de seus dados. Para isso, entre em contato conosco.</p>
+            <h2>6. Contato</h2>
+            <p>Dúvidas? Envie um e-mail para: <strong>contato@peronseguros.com.br</strong>.</p>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navLinks = document.querySelectorAll('#mainNav a');
+        menuToggle.addEventListener('click', () => { mainNav.classList.toggle('active'); menuToggle.querySelector('i').classList.toggle('fa-bars'); menuToggle.querySelector('i').classList.toggle('fa-times'); });
+        navLinks.forEach(link => { link.addEventListener('click', () => { if (mainNav.classList.contains('active')) { mainNav.classList.remove('active'); menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars'); } }); });
+        const animateOnScroll = () => { const elements = document.querySelectorAll('[data-anime]'); const windowTop = window.scrollY + window.innerHeight * 0.85; elements.forEach(element => { if (windowTop > element.offsetTop) { element.classList.add('animate'); } }); };
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll();
+        const privacyModal = document.getElementById('privacyModal');
+        const openPrivacyModalButtons = document.querySelectorAll('#openPrivacyModal, #openPrivacyModalFooter');
+        const closePrivacyModalButton = document.getElementById('closePrivacyModal');
+        openPrivacyModalButtons.forEach(button => { button.addEventListener('click', (e) => { e.preventDefault(); privacyModal.classList.add('active'); document.body.style.overflow = 'hidden'; }); });
+        const closeModal = () => { privacyModal.classList.remove('active'); document.body.style.overflow = ''; };
+        closePrivacyModalButton.addEventListener('click', closeModal);
+        privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) { closeModal(); } });
+    </script>
+</body>
+</html>
